@@ -1,0 +1,19 @@
+name: sentiment-analysis-inf
+components:
+- name: sentiment-analysis-inf
+  type: job
+  image:
+    type: build
+    build_source:
+      type: local
+    build_spec:
+      type: tfy-python-buildpack
+      command: uvicorn infer_realtime:app --port 8000 --host 0.0.0.0
+  env:
+    MLF_HOST: https://app.truefoundry.com
+    MLF_API_KEY: 'djE6dHJ1ZWZvdW5kcnk6VXJqYS1Kb2JhbnB1dHJhOjUwYjQ4NQ==' # Get the API_KEY from the settings of truefoundry account
+    MODEL_FQN: 'model:truefoundry/Urja-Jobanputra/sentiment-140/NN-classifier:3'
+    WORKSPACE_FQN: 'tfy-cluster-euwe1:demo-projects' # Add the WORKSPACE_FQN
+    RUN_ID: '8abd49c557d24ce3b0491d7a3144fba4'
+  ports:
+      - port: 8000

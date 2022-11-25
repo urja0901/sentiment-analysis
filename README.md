@@ -12,7 +12,7 @@ The aim of the problem is to classify the tweets using sentiment analysis on the
 
 ## Dataset Description
 
-Here is the Link to the dataset:  https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech
+Here is the Link to the dataset:  https://www.kaggle.com/datasets/kazanova/sentiment140?datasetId=2477&sortBy=voteCount
 
 Size of dataset: 4.74 mb 
 

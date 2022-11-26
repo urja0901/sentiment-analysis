@@ -11,10 +11,13 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 import pickle
 import string
+import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 from nltk.tokenize import RegexpTokenizer
+from tensorflow.python.ops.numpy_ops import np_config
 
+np_config.enable_numpy_behavior()
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -104,12 +107,13 @@ def preprocessed_tweet(tweet):
 def predict(tweet):
     predict = [tweet]
     test = pd.DataFrame(data=[predict],columns=['tweet'])
-    to_predict = preprocessed_tweet(test)
+    to_predict = tf.cast(preprocessed_tweet(test), tf.float32)
 
     print(to_predict.shape)
-    prediction = model.predict(to_predict)
-    prediction = (prediction > 0.5) 
+    prediction = model(inputs=to_predict)
     print(prediction)
+
+    prediction = (prediction['activation_1'] > 0.5) 
     return {'sentiment' : prediction.tolist()[0]}
 
 out = predict("It's a good day")

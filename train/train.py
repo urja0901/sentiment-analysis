@@ -18,22 +18,11 @@ run = mlfoundry.get_client().create_run(project_name="sentiment-140", run_name=f
 run.log_metrics({
     'accuracy_score': metadata["accuracy"][1]})
 
-run.log_dataset(
-    dataset_name='train',
-    features=X_train,
-    actuals=y_train)
-
-run.log_dataset(
-    dataset_name='test',
-    features=X_test,
-    predictions=metadata["y_pred"],
-    actuals=y_test,
-)
 
 model_version = run.log_model(
     name="NN-classifier",
     model=model,
-    framework="sklearn",
+    framework="tensorflow",
     description="model trained for twitter sentiment analysis",
 )
 # model_artifact = run.log_artifact(local_path="vectorizer.pickle", artifact_path="my-artifacts")

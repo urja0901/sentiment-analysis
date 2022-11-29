@@ -8,7 +8,7 @@ components:
       type: local
     build_spec:
       type: tfy-python-buildpack
-      command: uvicorn infer_realtime:app --port 8000 --host 0.0.0.0
+      command: uvicorn infer:app --port 8000 --host 0.0.0.0
   env:
     MLF_HOST: https://app.truefoundry.com
     MLF_API_KEY: <MLF API KEY> # Get the API_KEY from the settings of truefoundry account

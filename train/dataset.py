@@ -45,6 +45,7 @@ def lemmatizer_on_text(data, lm):
 
 def get_initial_data(data_path):
     data = pd.read_csv(data_path, encoding = "ISO-8859-1")
+    data = data.sample(1000)
     data.columns = ["label", "time", "date", "query", "username", "text"]
     data=data[['text','label']]
     data['label'][data['label']==4]=1

@@ -22,7 +22,7 @@ def train_model(X_train, Y_train, X_test=None, Y_test=None):
     metadata = {}
     model = tensorflow_based_model() # here we are calling the function of created model
     model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'])  
-    history=model.fit(X_train,Y_train,batch_size=128,epochs=10, validation_split=0.1)# here we are starting the training of model by feeding the training data
+    history=model.fit(X_train,Y_train,batch_size=128,epochs=1, validation_split=0.1)# here we are starting the training of model by feeding the training data
     acc = model.evaluate(X_test,Y_test) #we are starting to test the model here
     print(model.metrics)
     y_pred = model.predict(X_test) #getting predictions on the trained model

@@ -1,0 +1,17 @@
+name: sentiment-analysis-demo
+components:
+- name: sentiment-analysis-demo
+  type: job
+  image:
+    type: build
+    build_source:
+      type: local
+    build_spec:
+      type: tfy-python-buildpack
+      command: streamlit run demo/demo.py
+
+  env:
+    MLF_HOST: https://app.develop.truefoundry.tech
+    MLF_API_KEY: <MLF API KEY> # Get the API_KEY from the settings of truefoundry account
+    WORKSPACE_FQN: <WORKSPACE FQN> # Add the WORKSPACE_FQN
+    INFER_URL: <INFERENCE ENDPOINT> # Add the FastAPI Inference endpoint
